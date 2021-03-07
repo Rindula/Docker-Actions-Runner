@@ -1,4 +1,4 @@
-name: Docker
+name: 🗃 Docker
 
 on:
   push:
@@ -20,12 +20,12 @@ jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run tests
+      - name: 📑 Run tests
         run: |
           if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
@@ -40,19 +40,19 @@ jobs:
     # Ensure test job passes before pushing image.
     needs: test
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: github.event_name == 'push'
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build image
+      - name: 🛠 Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
-      - name: Log into registry
+      - name: 📝 Log into registry
         run: echo "${{ github.token }}" | docker login docker.pkg.github.com -u github-actions --password-stdin
 
-      - name: Push image
+      - name: ↗ Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
 
