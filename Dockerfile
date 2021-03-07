@@ -8,6 +8,9 @@ ENV GITHUB_REPOSITORY ""
 ENV AGENT_TOOLSDIRECTORY "/home/github/_work/_tool"
 
 RUN apt-get update \
+    apt-get install software-properties-common -y \
+    add-apt-repository ppa:ondrej/php -y \
+    apt-get update \
     && apt-get install -y \
         curl \
         sudo \
@@ -17,6 +20,13 @@ RUN apt-get update \
         gnupg2 \
         apt-transport-https \
         ca-certificates \
+        php5.6 \
+        php7.0 \
+        php7.1 \
+        php7.2 \
+        php7.3 \
+        php7.4 \
+        php8.0 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
