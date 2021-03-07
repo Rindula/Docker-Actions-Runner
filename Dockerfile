@@ -31,7 +31,8 @@ USER github
 WORKDIR /home/github
 
 RUN mkdir _work && \
-    ln -s /opt/hostedtoolcache _work/_tool
+    ln -s /opt/hostedtoolcache _work/_tool && \
+    chown -R github:github /opt/hostedtoolcache
 
 RUN curl -O -L curl -O -L https://github.com/actions/runner/releases/download/v$RUNNER_VERSION/actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
 RUN tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
