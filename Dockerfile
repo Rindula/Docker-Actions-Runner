@@ -17,7 +17,8 @@ RUN apt-get update && \
         gnupg2 \
         apt-transport-https \
         ca-certificates \
-        software-properties-common
+        software-properties-common\
+    && apt-get clean
 
 RUN add-apt-repository ppa:ondrej/php -y && \
     apt-get update && \
