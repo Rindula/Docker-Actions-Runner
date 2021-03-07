@@ -20,7 +20,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
 RUN useradd -m github && \
     usermod -aG sudo github && \
