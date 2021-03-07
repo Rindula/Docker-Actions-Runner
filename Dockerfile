@@ -6,6 +6,7 @@ ENV GITHUB_PERSONAL_TOKEN ""
 ENV GITHUB_OWNER ""
 ENV GITHUB_REPOSITORY ""
 ENV AGENT_TOOLSDIRECTORY "/opt/hostedtoolcache"
+ENV DEBIAN_FRONTEND="noninteractive"
 
 RUN apt-get update \
     && apt-get install -y \
@@ -19,8 +20,6 @@ RUN apt-get update \
         ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
 RUN useradd -m github && \
     usermod -aG sudo github && \
