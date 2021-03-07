@@ -20,6 +20,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+
 RUN useradd -m github && \
     usermod -aG sudo github && \
     echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
