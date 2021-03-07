@@ -5,6 +5,7 @@ ARG RUNNER_VERSION="2.277.1"
 ENV GITHUB_PERSONAL_TOKEN ""
 ENV GITHUB_OWNER ""
 ENV GITHUB_REPOSITORY ""
+ENV AGENT_TOOLSDIRECTORY "/opt/hostedtoolcache"
 
 RUN apt-get update \
     && apt-get install -y \
