@@ -1,8 +1,8 @@
 #!/bin/sh
 registration_url="https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/actions/runners/registration-token"
-echo "Requesting registration URL at '${registration_url}' with ${GITHUB_PAT}"
+echo "Requesting registration URL at '${registration_url}' with ${GITHUB_PERSONAL_TOKEN}"
 
-payload=$(curl -sX POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer ${GITHUB_PAT}" ${registration_url})
+payload=$(curl -sX POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: Bearer ${GITHUB_PERSONAL_TOKEN}" ${registration_url})
 RUNNER_TOKEN=$(echo "$payload" | jq .token --raw-output)
 
 echo "$(hostname) - $payload - ${RUNNER_TOKEN} - ${GITHUB_OWNER}/${GITHUB_REPOSITORY}"
