@@ -31,6 +31,7 @@ USER github
 WORKDIR /home/github
 
 RUN mkdir _work && \
+    mkdir /opt/hostedtoolcache && \
     ln -s /opt/hostedtoolcache _work/_tool && \
     chown -R github:github /opt/hostedtoolcache
 
