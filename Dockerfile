@@ -23,7 +23,8 @@ RUN apt-get update && \
     && apt-get clean all
 
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt install -y python3.8 python3.7 python3.9
+    apt-get update && \
+    apt-get install -y python3.8 python3.7 python3.9
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
