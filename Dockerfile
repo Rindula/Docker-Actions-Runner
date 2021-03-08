@@ -20,8 +20,8 @@ RUN apt-get update && \
         software-properties-common\
     && apt-get clean
 
-RUN add-apt-repository ppa:ondrej/php -y && \
-    apt-get update && \
+RUN add-apt-repository -y ppa:ondrej/php
+RUN apt-get update && \
     apt-get install -y \
         php5.6 \
         php7.0 \
