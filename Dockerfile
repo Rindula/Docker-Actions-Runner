@@ -14,6 +14,7 @@ RUN apt-get update && \
         git \
         jq \
         tar \
+        wget \
         gnupg2 \
         apt-transport-https \
         ca-certificates \
