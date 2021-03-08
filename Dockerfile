@@ -19,7 +19,7 @@ RUN apt-get update && \
         apt-transport-https \
         ca-certificates \
         lsb-release\
-    && apt-get clean
+    && apt-get clean all
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
@@ -32,7 +32,7 @@ RUN apt-get update && \
         php7.3 \
         php7.4 \
         php8.0 \
-    && apt-get clean \
+    && apt-get clean all\
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m github && \
