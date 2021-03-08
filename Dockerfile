@@ -18,7 +18,8 @@ RUN apt-get update && \
         gnupg2 \
         apt-transport-https \
         ca-certificates \
-        lsb-release\
+        lsb-release \
+        software-properties-common \
     && apt-get clean all
 
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
