@@ -20,11 +20,27 @@ RUN apt-get update && \
         ca-certificates \
         lsb-release \
         software-properties-common \
+        build-essential zlib1g-dev \
+        libncurses5-dev \
+        libgdbm-dev \
+        libnss3-dev \
+        libssl-dev \
+        libsqlite3-dev \
+        libreadline-dev \
+        libffi-dev curl \
+        libbz2-dev
     && apt-get clean all
+    
+RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb_release && \
+    echo "DISTRIB_RELEASE=$(lsb_release -sr)" >> /etc/lsb_release && \
+    echo "DISTRIB_CODENAME=$(lsb_release -sc)" >> /etc/lsb_release && \
+    echo "DISTRIB_DESCRIPTION=$(lsb_release -sd)" >> /etc/lsb_release
 
-RUN add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt-get update && \
-    apt-get install -y python3.8 python3.7 python3.9
+RUN curl -O https://www.python.org/ftp/python/3.8.8/Python-3.8.8.tar.xz && \
+    tar -xf Python-3.8.8.tar.xz && cd Python-3.8.2 && \
+    ./configure --enable-optimizations && \
+    make && \
+    make altinstall
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
