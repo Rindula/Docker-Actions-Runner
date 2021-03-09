@@ -21,15 +21,6 @@ RUN apt-get update && \
         ca-certificates \
         lsb-release \
         software-properties-common \
-        build-essential zlib1g-dev \
-        libncurses5-dev \
-        libgdbm-dev \
-        libnss3-dev \
-        libssl-dev \
-        libsqlite3-dev \
-        libreadline-dev \
-        libffi-dev curl \
-        libbz2-dev \
     && apt-get clean all
     
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
