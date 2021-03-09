@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu:18.04
 
 ARG RUNNER_VERSION="2.277.1"
 
