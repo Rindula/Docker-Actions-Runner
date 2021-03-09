@@ -26,6 +26,7 @@ RUN apt-get update && \
     && apt-get clean all
     
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+RUN add-apt-repository ppa:ondrej/php -y
 
 RUN useradd -m github && \
     usermod -aG sudo github && \
