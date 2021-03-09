@@ -28,7 +28,7 @@ RUN apt-get update && \
         libsqlite3-dev \
         libreadline-dev \
         libffi-dev curl \
-        libbz2-dev
+        libbz2-dev \
     && apt-get clean all
     
 RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb_release && \
