@@ -30,14 +30,14 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN add-apt-repository ppa:ondrej/php -y && \
     apt-get update && \
     apt-get install -y \
-        php php-pear \
-        php5.6 php5.6-* \
-        php7.0 php7.0-* \
-        php7.1 php7.1-* \
-        php7.2 php7.2-* \
-        php7.3 php7.3-* \
-        php7.4 php7.4-* \
-        php8.0 php8.0-*
+        php php-* \
+        php5.6 \
+        php7.0 \
+        php7.1 \
+        php7.2 \
+        php7.3 \
+        php7.4 \
+        php8.0
 
 RUN useradd -m github && \
     usermod -aG sudo github && \
