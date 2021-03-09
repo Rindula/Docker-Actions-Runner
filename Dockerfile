@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM ubuntu:buster
 
 ARG RUNNER_VERSION="2.277.1"
 
@@ -6,6 +6,7 @@ ENV GITHUB_PERSONAL_TOKEN ""
 ENV GITHUB_OWNER ""
 ENV GITHUB_REPOSITORY ""
 ENV AGENT_TOOLSDIRECTORY "/home/github/_work/_tool"
+ENV DEBIAN_FRONTEND "NONINTERACTIVE"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -31,30 +32,7 @@ RUN apt-get update && \
         libbz2-dev \
     && apt-get clean all
     
-RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb-release && \
-    echo "DISTRIB_RELEASE=$(lsb_release -sr)" >> /etc/lsb-release && \
-    echo "DISTRIB_CODENAME=$(lsb_release -sc)" >> /etc/lsb-release && \
-    echo "DISTRIB_DESCRIPTION=\"$(lsb_release -sd)\"" >> /etc/lsb-release
-
-RUN curl -O https://www.python.org/ftp/python/3.8.8/Python-3.8.8.tar.xz && \
-    tar -xf Python-3.8.8.tar.xz && cd Python-3.8.8 && \
-    ./configure --enable-optimizations && \
-    make && \
-    make install
-
-RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-RUN apt-get update && \
-    apt-get install -y \
-        php5.6 \
-        php7.0 \
-        php7.1 \
-        php7.2 \
-        php7.3 \
-        php7.4 \
-        php8.0 \
-    && apt-get clean all\
-    && rm -rf /var/lib/apt/lists/*
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
 RUN useradd -m github && \
     usermod -aG sudo github && \
