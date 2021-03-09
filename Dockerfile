@@ -37,7 +37,7 @@ RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb_release && \
     echo "DISTRIB_DESCRIPTION=$(lsb_release -sd)" >> /etc/lsb_release
 
 RUN curl -O https://www.python.org/ftp/python/3.8.8/Python-3.8.8.tar.xz && \
-    tar -xf Python-3.8.8.tar.xz && cd Python-3.8.2 && \
+    tar -xf Python-3.8.8.tar.xz && cd Python-3.8.8 && \
     ./configure --enable-optimizations && \
     make && \
     make altinstall
