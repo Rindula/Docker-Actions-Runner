@@ -34,7 +34,7 @@ RUN apt-get update && \
 RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb-release && \
     echo "DISTRIB_RELEASE=$(lsb_release -sr)" >> /etc/lsb-release && \
     echo "DISTRIB_CODENAME=$(lsb_release -sc)" >> /etc/lsb-release && \
-    echo "DISTRIB_DESCRIPTION=$(lsb_release -sd)" >> /etc/lsb-release
+    echo "DISTRIB_DESCRIPTION=\"$(lsb_release -sd)\"" >> /etc/lsb-release
 
 RUN curl -O https://www.python.org/ftp/python/3.8.8/Python-3.8.8.tar.xz && \
     tar -xf Python-3.8.8.tar.xz && cd Python-3.8.8 && \
