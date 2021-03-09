@@ -7,6 +7,8 @@ ENV GITHUB_OWNER ""
 ENV GITHUB_REPOSITORY ""
 ENV AGENT_TOOLSDIRECTORY "/home/github/_work/_tool"
 ENV DEBIAN_FRONTEND "NONINTERACTIVE"
+ENV TZ=Europe/Berlin
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && \
     apt-get install -y \
