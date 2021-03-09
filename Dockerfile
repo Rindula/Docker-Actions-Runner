@@ -1,4 +1,4 @@
-FROM ubuntu:buster
+FROM ubuntu:latest
 
 ARG RUNNER_VERSION="2.277.1"
 
