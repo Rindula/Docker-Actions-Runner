@@ -31,16 +31,16 @@ RUN apt-get update && \
         libbz2-dev \
     && apt-get clean all
     
-RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb_release && \
-    echo "DISTRIB_RELEASE=$(lsb_release -sr)" >> /etc/lsb_release && \
-    echo "DISTRIB_CODENAME=$(lsb_release -sc)" >> /etc/lsb_release && \
-    echo "DISTRIB_DESCRIPTION=$(lsb_release -sd)" >> /etc/lsb_release
+RUN echo "DISTRIB_ID=$(lsb_release -si)" > /etc/lsb-release && \
+    echo "DISTRIB_RELEASE=$(lsb_release -sr)" >> /etc/lsb-release && \
+    echo "DISTRIB_CODENAME=$(lsb_release -sc)" >> /etc/lsb-release && \
+    echo "DISTRIB_DESCRIPTION=$(lsb_release -sd)" >> /etc/lsb-release
 
 RUN curl -O https://www.python.org/ftp/python/3.8.8/Python-3.8.8.tar.xz && \
     tar -xf Python-3.8.8.tar.xz && cd Python-3.8.8 && \
     ./configure --enable-optimizations && \
     make && \
-    make altinstall
+    make install
 
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
