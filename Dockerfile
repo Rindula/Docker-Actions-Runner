@@ -23,6 +23,7 @@ RUN apt-get update && \
         ca-certificates \
         lsb-release \
         software-properties-common \
+        sshpass \
     && apt-get clean all
     
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
